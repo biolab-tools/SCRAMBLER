@@ -22,7 +22,7 @@ https://github.com/biolab-tools/SCRAMBLER.git
 * Activate conda environment:
 ``` conda activate scrambler-env```
 * Test SCRAMBLER installation:
-``` python scrambler/run_scrambler.py -p examples/example_params.toml ```
+``` python scrambler/run_scrambler.py -h```
 
 
 
