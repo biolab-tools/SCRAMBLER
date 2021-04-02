@@ -13,7 +13,7 @@ Reconstruction of CRISPR arrays from the directed graph is done either with the 
 * Install conda:
 https://conda.io/projects/conda/en/latest/user-guide/install/
 * Download SCRAMBLER:
-https://github.com/asvx/SCRAMBLER.git
+https://github.com/biolab-tools/SCRAMBLER.git
 * Create conda environment using `environment.yml` file:
 ```
 > cd /PATH_TO_SCRAMBLER
