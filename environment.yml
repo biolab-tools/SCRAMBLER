@@ -1,0 +1,10 @@
+name: scrambler-env
+channels:
+  - conda-forge
+dependencies:
+  - python=3.8.*
+  - numpy=1.20.2
+  - scikit-learn=0.24
+  - editdistance=0.5.3
+  - tqdm=4.59.0
+  - tomlkit=0.7.0
