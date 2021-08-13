@@ -32,7 +32,7 @@ To run SCRAMBLER with the test data use:
 ``` 
 python scrambler/run_scrambler.py \
 -i examples/input_data/spacer_pairs_ecoliR1.txt \
--o examples/output/ecoliR1_arrays.txt \
+-o examples/output/ \
 -p examples/example_params.toml 
 ```
 Required parameters:

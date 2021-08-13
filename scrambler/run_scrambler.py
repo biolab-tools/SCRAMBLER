@@ -25,7 +25,7 @@ def main():
     )
     parser.add_argument(
         "-o",
-        "--output_arrays",
+        "--output_path",
         help="Path to output file with arrays",
         required=True,  type=os.path.abspath
     )
@@ -62,7 +62,8 @@ def main():
             assembly_type=assembly["assembler"],
         )
 
-    experiment_1.dump_arrays_to_file(args.output_arrays)
+    experiment_1.dump_arrays_to_file(args.output_path)
+    experiment_1.dump_arrays_to_fasta(args.output_path)
 
     print("Array reconstruction completed!\n")
 

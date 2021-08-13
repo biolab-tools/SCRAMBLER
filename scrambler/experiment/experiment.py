@@ -81,7 +81,7 @@ class Experiment:
 
     def dump_arrays_to_file(self, output_file_path):
         print("- Saving arrays to file...")
-        with open(output_file_path, "w") as file:
+        with open(output_file_path + "/output_arrays.txt", "w") as file:
             dump_data = ""
             for group_key, arrs in self.arrays_dict.items():
                 if len(arrs) > 0:
@@ -92,9 +92,7 @@ class Experiment:
                     if group_key[1].svm_after_threshold is None:
                         svm_after_threshold = False
                     dump_data += (
-                        "@SVM_AFTER_THRESHOLD\t"
-                        + str(svm_after_threshold)
-                        + "\n\n"
+                        "@SVM_AFTER_THRESHOLD\t" + str(svm_after_threshold) + "\n\n"
                     )
 
                     i = 0
@@ -106,6 +104,33 @@ class Experiment:
                         )
 
                     dump_data += "\n"
+
+            file.write(dump_data)
+
+    def dump_arrays_to_fasta(self, fasta_output_file_path):
+        with open(fasta_output_file_path + "/output_arrays.fasta", "w") as file:
+            dump_data = ""
+            for group_key, arrs in self.arrays_dict.items():
+                if len(arrs) > 0:
+                    header = ">ASSEMBLER_" + group_key[0] + "|"
+                    header += "THRESHOLD_" + str(group_key[1].threshold) + "|"
+                    header += "SVM_" + str(group_key[1].svm) + "|"
+                    if group_key[1].svm_after_threshold is None:
+                        svm_after_threshold = False
+                    header += "SVM_AFTER_THRESHOLD_" + str(svm_after_threshold) + "|"
+
+                    for arr_num, arr_idx in enumerate(arrs, 1):
+                        for sp_num, sp_idx in enumerate(arr_idx):
+                            dump_data += (
+                                header
+                                + "ARRAY_"
+                                + str(arr_num)
+                                + "|SP_"
+                                + str(sp_num)
+                                + "\n"
+                                + self.index_to_cluster[sp_idx]
+                                + "\n"
+                            )
 
             file.write(dump_data)
 
