@@ -39,7 +39,7 @@ Required parameters:
 
 `-i` input file with spacer pairs
 
-`-o` output file with assembled arrays
+`-o` path to output directory for assembled arrays
 
 `-p` path to config file
 
