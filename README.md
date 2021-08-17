@@ -4,7 +4,7 @@
 
 Using amplicon sequencing data, SCRAMBLER generates a directed graph in which individual spacers are represented by the graph’s nodes, and the co-occurrences of spacers in two-spacer reads (i.e. pairs of spacers identified during sequencing) are represented by the graph’s edges. 
 
-Artifacts that appear during PCR amplification (“PCR chimeras”) can be largely removed either via SVM-based (Support Vector Machine) filtering or by applying a threshold that filters out sequences by their abundance.
+Artifacts that appear during PCR amplification (“PCR chimeras”) can be largely removed either via machine learning filtering or by applying a threshold that filters out sequences by their abundance.
 
 Reconstruction of CRISPR arrays from the directed graph is done either with the “greedy” or the “soft” algorithm. "Greedy" algorithm reconstructs only the most abundant CRISPR arrays. "Soft" algorithm reconstructs all possible CRISPR array variants.
 
