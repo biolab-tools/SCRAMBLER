@@ -185,7 +185,7 @@ Output for each assembly method starts with a 5-line header with filtering and a
 @ARRAY	2	CTTTCGCAGACGCGCGGCGATACGCTCACGCA	CAGCCGAAGCCAAAGGTGATGCCGAACACGCT	GGCTCCCTGTCGGTTGTAATTGATAATGTTGA	TTTGGATCGGGTCTGGAATTTCTGAGCGGTCGC	CGAATCGCGCATACCCTGCGCGTCGCCGCCTGC	TCAGCTTTATAAATCCGGAGATACGGAAACTA	GACTCACCCCGAAAGAGATTGCCAGCCAGCTT	CTGCTGGAGCTGGCTGCAAGGCAAGCCGCCCA	CCCACCAGCGCGTTTTTTGCCGGGGCCATAGT	GGAGTTCAGACATAGGTGGAATGATGGACTAC	CCCGGTAGCCAGGTTTGCAACGCCTGAACCGA	GCAACGACGGTGAGATTTCACGCCTGACGCTG
 ```
 * **FASTA-file.**
-Each record in the file represents a spacer from the assembled arrays. A header contains information about filtering and assembly options and the number of the corresponding spacer in an array.
+Each record in the file represents a spacer from the assembled arrays. A header contains information about filtering and assembly options and the corresponding spacer number of in an array.
 ```
 >ASSEMBLER_soft|THRESHOLD_100|LOGREG_True|LOGREG_AFTER_THRESHOLD_False|ARRAY_1|SP_0
 CTTTCGCAGACGCGCGGCGATACGCTCACGCA
