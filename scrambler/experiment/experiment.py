@@ -57,10 +57,10 @@ class Experiment:
             graph = sp_graph.SpacerGraph(self.pairs_idx)
             self.graph_dict[graph.get_key()] = graph
 
-    def filter_graph_svm(self, graph):
-        print("- Filtering graph using SVM-filter...")
-        svm_graph = svm_filtering(graph)
-        self.graph_dict[svm_graph.get_key()] = svm_graph
+    def filter_graph_logreg(self, graph):
+        print("- Filtering graph using LogReg-filter...")
+        logreg_graph = logreg_filtering(graph)
+        self.graph_dict[logreg_graph.get_key()] = logreg_graph
 
     def filter_graph_threshold(self, graph, threshold):
         print("- Filtering graph using thresholding...")
@@ -88,11 +88,11 @@ class Experiment:
                     dump_data += "@ASSEMBLER\t" + group_key[0] + "\n"
                     dump_data += "@FILTERING_OPTIONS\n"
                     dump_data += "@THRESHOLD\t" + str(group_key[1].threshold) + "\n"
-                    dump_data += "@SVM\t" + str(group_key[1].svm) + "\n"
-                    if group_key[1].svm_after_threshold is None:
-                        svm_after_threshold = False
+                    dump_data += "@LOGREG\t" + str(group_key[1].logreg) + "\n"
+                    if group_key[1].logreg_after_threshold is None:
+                        logreg_after_threshold = False
                     dump_data += (
-                        "@SVM_AFTER_THRESHOLD\t" + str(svm_after_threshold) + "\n\n"
+                        "@LOGREG_AFTER_THRESHOLD\t" + str(logreg_after_threshold) + "\n\n"
                     )
 
                     i = 0
@@ -114,10 +114,10 @@ class Experiment:
                 if len(arrs) > 0:
                     header = ">ASSEMBLER_" + group_key[0] + "|"
                     header += "THRESHOLD_" + str(group_key[1].threshold) + "|"
-                    header += "SVM_" + str(group_key[1].svm) + "|"
-                    if group_key[1].svm_after_threshold is None:
-                        svm_after_threshold = False
-                    header += "SVM_AFTER_THRESHOLD_" + str(svm_after_threshold) + "|"
+                    header += "LOGREG_" + str(group_key[1].logreg) + "|"
+                    if group_key[1].logreg_after_threshold is None:
+                        logreg_after_threshold = False
+                    header += "LOGREG_AFTER_THRESHOLD_" + str(logreg_after_threshold) + "|"
 
                     for arr_num, arr_idx in enumerate(arrs, 1):
                         for sp_num, sp_idx in enumerate(arr_idx):
@@ -141,27 +141,27 @@ class Experiment:
             self.restore_arrays_greedy(graph, min_arr_len)
 
     def run_experiment_filter_assembly(  # TODO
-        self, threshold, svm, svm_after_threshold, assembly_type
+        self, threshold, logreg, logreg_after_threshold, assembly_type
     ):
 
         filter_params = GraphKey(
-            threshold=threshold, svm=svm, svm_after_threshold=svm_after_threshold
+            threshold=threshold, logreg=logreg, logreg_after_threshold=logreg_after_threshold
         )
 
         if (assembly_type, filter_params,) in self.arrays_dict:
             return
 
         if filter_params not in self.graph_dict:
-            if svm_after_threshold is None:
-                if svm:
+            if logreg_after_threshold is None:
+                if logreg:
                     if (
-                        GraphKey(threshold=0, svm=True, svm_after_threshold=None)
+                        GraphKey(threshold=0, logreg=True, logreg_after_threshold=None)
                         not in self.graph_dict
                     ):
-                        self.filter_graph_svm(
+                        self.filter_graph_logreg(
                             self.graph_dict[
                                 GraphKey(
-                                    threshold=0, svm=False, svm_after_threshold=None
+                                    threshold=0, logreg=False, logreg_after_threshold=None
                                 )
                             ]
                         )
@@ -169,7 +169,7 @@ class Experiment:
                 if threshold > 0:
                     self.filter_graph_threshold(
                         self.graph_dict[
-                            GraphKey(threshold=0, svm=svm, svm_after_threshold=None)
+                            GraphKey(threshold=0, logreg=logreg, logreg_after_threshold=None)
                         ],
                         threshold,
                     )
@@ -177,15 +177,15 @@ class Experiment:
                 if threshold > 0:
                     self.filter_graph_threshold(
                         self.graph_dict[
-                            GraphKey(threshold=0, svm=False, svm_after_threshold=None)
+                            GraphKey(threshold=0, logreg=False, logreg_after_threshold=None)
                         ],
                         threshold,
                     )
 
-                self.filter_graph_svm(
+                self.filter_graph_logreg(
                     self.graph_dict[
                         GraphKey(
-                            threshold=threshold, svm=False, svm_after_threshold=None
+                            threshold=threshold, logreg=False, logreg_after_threshold=None
                         )
                     ]
                 )

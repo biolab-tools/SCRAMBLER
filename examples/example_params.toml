@@ -1,9 +1,9 @@
 [assembly.1] # Assembly name
 
 # Filtering options
-use_svm_filter = 1
+use_logreg_filter = 1
 use_threshold_filter = 100
-svm_after_threshold = 0
+logreg_after_threshold = 0
 
 # Assembly options
 assembler = 'soft'
@@ -12,9 +12,9 @@ assembler = 'soft'
 [assembly.2] # Assembly name
 
 # Filtering options
-use_svm_filter = 1
+use_logreg_filter = 1
 use_threshold_filter = 100
-svm_after_threshold = 0
+logreg_after_threshold = 0
 
 # Assembly options
 assembler = 'greedy'

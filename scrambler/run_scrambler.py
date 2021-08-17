@@ -46,19 +46,19 @@ def main():
     for assembly in config["assembly"].values():  # TODO
 
         threshold = assembly["use_threshold_filter"]
-        svm = bool(assembly["use_svm_filter"])
+        logreg = bool(assembly["use_logreg_filter"])
 
-        if assembly["svm_after_threshold"] == 0:
-            svm_after_threshold = None
-        elif assembly["svm_after_threshold"] == 1:
-            svm_after_threshold = True
+        if assembly["logreg_after_threshold"] == 0:
+            logreg_after_threshold = None
+        elif assembly["logreg_after_threshold"] == 1:
+            logreg_after_threshold = True
         else:
-            svm_after_threshold = None
+            logreg_after_threshold = None
 
         experiment_1.run_experiment_filter_assembly(
             threshold=threshold,
-            svm=svm,
-            svm_after_threshold=svm_after_threshold,
+            logreg=logreg,
+            logreg_after_threshold=logreg_after_threshold,
             assembly_type=assembly["assembler"],
         )
 

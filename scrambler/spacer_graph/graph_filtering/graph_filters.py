@@ -17,26 +17,26 @@ def threshold_filtering(graph, threshold):
         return new_graph
 
 
-def svm_filtering(graph):
+def logreg_filtering(graph):
     new_graph = deepcopy(graph)
 
-    if graph.svm:
-        raise NameError("The graph has been already filtered with SVM model")
+    if graph.logreg:
+        raise NameError("The graph has been already filtered with LogReg model")
     elif graph.threshold > 0:
-        new_graph.svm_after_threshold = True
+        new_graph.logreg_after_threshold = True
 
-    new_graph.svm = True
+    new_graph.logreg = True
     emb_calc = EmbeddingsCalculator()
-    chimera_filter = SVMFilter()
-    embs_filt_svm = emb_calc.fit_predict(graph.graph_adjmatrix)
+    chimera_filter = LogRegFilter()
+    embs_filt_logreg = emb_calc.fit_predict(graph.graph_adjmatrix)
     new_graph.graph_adjmatrix = chimera_filter.filter_graph(
-        graph.graph_adjmatrix, embs_filt_svm
+        graph.graph_adjmatrix, embs_filt_logreg
     )
 
     return new_graph
 
 
-class SVMFilter:
+class LogRegFilter:
     def __init__(self, model_path=None):
         if model_path is None:
             model_path = os.path.join(

@@ -67,16 +67,16 @@ Here is an example config file `example_params.toml` for running two assemblies,
 
 ```
 [assembly.1]
-use_svm_filter = 1 
+use_logreg_filter = 1 
 use_threshold_filter = 100
-svm_after_threshold = 0 
+logreg_after_threshold = 0 
 assembler = 'soft'
 
 
 [assembly.2] 
-use_svm_filter = 1
+use_logreg_filter = 1
 use_threshold_filter = 100
-svm_after_threshold = 0
+logreg_after_threshold = 0
 assembler = 'greedy'
 ```
 
@@ -88,17 +88,17 @@ Each assembly parameters section consists of assembly name (which should be writ
 <table>
     <thead>
         <tr>
-            <th colspan=2>use_svm_filter</th>
+            <th colspan=2>use_logreg_filter</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td style="font-weight:bold">0</td>
-            <td>SVM filtering is not performed</td>
+            <td>LogReg filtering is not performed</td>
         </tr>
         <tr>
             <td style="font-weight:bold">1</td>
-            <td>SVM filtering is performed</td>
+            <td>LogReg filtering is performed</td>
         </tr>
     </tbody>
 </table>
@@ -124,17 +124,17 @@ Each assembly parameters section consists of assembly name (which should be writ
 <table>
     <thead>
         <tr>
-            <th colspan=2>svm_after_threshold</th>
+            <th colspan=2>logreg_after_threshold</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td style="font-weight:bold">0</td>
-            <td>SVM is performed before threshold filtering</td>
+            <td>LogReg is performed before threshold filtering</td>
         </tr>
         <tr>
             <td style="font-weight:bold">1</td>
-            <td>SVM is performed after threshold filtering</td>
+            <td>LogReg is performed after threshold filtering</td>
         </tr>
     </tbody>
 </table>
@@ -164,8 +164,8 @@ File `example_params.toml` could be found in `examples` directory.
 @ASSEMBLER	soft
 @FILTERING_OPTIONS
 @THRESHOLD	100
-@SVM	True
-@SVM_AFTER_THRESHOLD	False
+@LOGREG	True
+@LOGREG_AFTER_THRESHOLD	False
 
 @ARRAY	1	CTTTCGCAGACGCGCGGCGATACGCTCACGCA	CAGCCGAAGCCAAAGGTGATGCCGAACACGCT	GGCTCCCTGTCGGTTGTAATTGATAATGTTGA	TTTGGATCGGGTCTGGAATTTCTGAGCGGTCGC	CGAATCGCGCATACCCTGCGCGTCGCCGCCTGC	TCAGCTTTATAAATCCGGAGATACGGAAACTA	GACTCACCCCGAAAGAGATTGCCAGCCAGCTT	CTGCTGGAGCTGGCTGCAAGGCAAGCCGCCCA	CCCACCAGCGCGTTTTTTGCCGGGGCCATAGT	GGAGTTCAGACATAGGTGGAATGATGGACTAC	CCCGGTAGCCAGGTTTGCAACGCCTGAACCGA	GCAACGACGGTGAGATTTCACGCCTGACGCTG
 @ARRAY	2	GCAAAAACCGGGCAATCGCAAAAAGGCGTAAT	GTGTTTGCGGCATTAACGCTCACCAGCATTTC	ACGTGGTCATGGGTGCTGCTGTTGCAGAGCCA	AGCAGATACACGGCTTTGTATTCCGTGCGCCC	AATAGCAATAGTCCATAGATTTGCGAAAACAG	GAGCCTGACGAGACTACTGAGGCCGTTCTGTC
@@ -174,8 +174,8 @@ File `example_params.toml` could be found in `examples` directory.
 @ASSEMBLER	greedy
 @FILTERING_OPTIONS
 @THRESHOLD	100
-@SVM	True
-@SVM_AFTER_THRESHOLD	False
+@LOGREG	True
+@LOGREG_AFTER_THRESHOLD	False
 
 @ARRAY	1	GCAAAAACCGGGCAATCGCAAAAAGGCGTAAT	GTGTTTGCGGCATTAACGCTCACCAGCATTTC	ACGTGGTCATGGGTGCTGCTGTTGCAGAGCCA	AGCAGATACACGGCTTTGTATTCCGTGCGCCC	AATAGCAATAGTCCATAGATTTGCGAAAACAG	GAGCCTGACGAGACTACTGAGGCCGTTCTGTC
 @ARRAY	2	CTTTCGCAGACGCGCGGCGATACGCTCACGCA	CAGCCGAAGCCAAAGGTGATGCCGAACACGCT	GGCTCCCTGTCGGTTGTAATTGATAATGTTGA	TTTGGATCGGGTCTGGAATTTCTGAGCGGTCGC	CGAATCGCGCATACCCTGCGCGTCGCCGCCTGC	TCAGCTTTATAAATCCGGAGATACGGAAACTA	GACTCACCCCGAAAGAGATTGCCAGCCAGCTT	CTGCTGGAGCTGGCTGCAAGGCAAGCCGCCCA	CCCACCAGCGCGTTTTTTGCCGGGGCCATAGT	GGAGTTCAGACATAGGTGGAATGATGGACTAC	CCCGGTAGCCAGGTTTGCAACGCCTGAACCGA	GCAACGACGGTGAGATTTCACGCCTGACGCTG
